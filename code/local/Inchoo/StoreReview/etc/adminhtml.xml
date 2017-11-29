@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <storereview module="inchoo_storereview" translate="title">
+            <title>Store Review</title>
+            <sort_order>71</sort_order>
+            <children>
+                <manage module="inchoo_storereview" translate="title">
+                    <title>Manage Store Reviews</title>
+                    <action>adminhtml/storereview/index</action>
+                </manage>
+            </children>
+        </storereview>
+    </menu>
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <storereview translate="title" module="inchoo_storereview">
+                        <title>Store Review</title>
+                        <sort_order>-100</sort_order>
+                        <children>
+                            <manage translate="title">
+                                <title>Manage Store Reviews</title>
+                                <sort_order>1</sort_order>
+                            </manage>
+                        </children>
+                    </storereview>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

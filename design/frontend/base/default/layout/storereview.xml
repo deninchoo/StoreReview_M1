@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <!--
+        Adds 'My Store Review' to the My Account navigation menu
+    -->
+
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink">
+                <name>store_review_tab</name>
+                <path>storereview/index</path>
+                <label>My Store Review</label>
+            </action>
+        </reference>
+    </customer_account>
+
+    <!--
+        Loads the Store Review layout that shows the customer store review
+    -->
+
+    <inchoo_storereview_index_index>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="storereview/index" name="storereview_index_layout" template="storereview/index.phtml"/>
+            <!--<block type="customer/account_dashboard" name="customer.account.link.back"-->
+                   <!--template="customer/account/link/back.phtml"/>-->
+        </reference>
+    </inchoo_storereview_index_index>
+
+    <!--
+        Loads the Store Review layout that shows the form used to edit the customer store review
+    -->
+
+    <inchoo_storereview_index_edit>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="storereview/index" name="store_review_edit_layout" template="storereview/edit.phtml"/>
+            <block type="customer/account_dashboard" name="customer.account.link.back"
+                   template="customer/account/link/back.phtml"/>
+        </reference>
+    </inchoo_storereview_index_edit>
+
+    <cms_index_index translate="label">
+        <reference name="content">
+            <block type="storereview/index" name="storereview_home_layout" template="storereview/home.phtml"/>
+        </reference>
+    </cms_index_index>
+
+</layout>

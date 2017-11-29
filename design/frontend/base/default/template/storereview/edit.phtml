@@ -1,0 +1,48 @@
+<div class="page-title">
+    <h1><?php echo $this->__('My Store Review') ?></h1>
+</div>
+<?php if ($review = $this->getStoreReview()): ?>
+    <form class="form"
+          action="<?php echo $this->getEditFormAction(); ?>"
+          id="store-review-form"
+          method="post"
+          data-hasrequired=""
+          data-mage-init='{"validation":{}}'>
+        <?php echo $this->getBlockHtml('formkey') ?>
+        <fieldset class="fieldset">
+            <div class="field note no-label">Use the form below to write your store review.</div>
+            <br>
+            <div class="field title required">
+                <label class="label" for="title"><span>Title</span></label>
+                <div class="control">
+                    <input name="title" id="title" title="" value="<?php if ($review) {
+                        echo $this->escapeHtml($review->getTitle());
+                    } ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <br>
+            <div class="field review required">
+                <label class="label" for="review"><span>Review</span></label>
+                <div class="control">
+                    <textarea name="review" id="review" title="" class="input-text" cols="5" rows="3"
+                              data-validate="{required:true}"><?php if ($review) {
+                            echo $this->escapeHtml($review->getReview());
+                        } ?></textarea>
+                </div>
+            </div>
+
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" title="Submit" class="action submit primary">
+                    <span>Submit</span>
+                </button>
+            </div>
+            <div class="secondary">
+                <a class="action" href=""><span></span></a>
+            </div>
+        </div>
+    </form>
+<?php else: ?>
+    <div>You don't have a store review yet <a href="/storereview/index/edit">Create one</a></div>
+<?php endif; ?>

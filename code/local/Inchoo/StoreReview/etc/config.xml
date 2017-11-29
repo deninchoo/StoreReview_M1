@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Inchoo_StoreReview>
+            <version>1.0.0</version>
+        </Inchoo_StoreReview>
+    </modules>
+
+    <frontend>
+        <routers>
+            <inchoo_storereview>
+                <use>standard</use>
+                <args>
+                    <module>Inchoo_StoreReview</module>
+                    <frontName>storereview</frontName>
+                </args>
+            </inchoo_storereview>
+        </routers>
+        <layout>
+            <updates>
+                <module>
+                    <file>storereview.xml</file>
+                </module>
+            </updates>
+        </layout>
+    </frontend>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <storereview>
+                    <file>storereview.xml</file>
+                </storereview>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <inchoo_storereview before="Mage_Adminhtml">Inchoo_StoreReview_Adminhtml</inchoo_storereview>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <global>
+        <blocks>
+            <storereview>
+                <class>Inchoo_StoreReview_Block</class>
+            </storereview>
+        </blocks>
+
+        <models>
+            <storereview>
+                <class>Inchoo_StoreReview_Model</class>
+                <resourceModel>storereview_mysql4</resourceModel>
+            </storereview>
+            <storereview_mysql4>
+                <class>Inchoo_StoreReview_Model_Mysql4</class>
+                <entities>
+                    <review>
+                        <table>inchoo_store_review</table>
+                    </review>
+                </entities>
+            </storereview_mysql4>
+        </models>
+
+        <resources>
+            <storereview_write>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </storereview_write>
+
+            <inchoo_storereview_setup>
+                <setup>
+                    <module>Inchoo_StoreReview</module>
+                </setup>
+            </inchoo_storereview_setup>
+        </resources>
+
+        <helpers>
+            <inchoo_storereview>
+                <class>Inchoo_StoreReview_Helper</class>
+            </inchoo_storereview>
+        </helpers>
+
+    </global>
+</config>

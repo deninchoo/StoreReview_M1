@@ -1,0 +1,30 @@
+<?php
+$reviews = $this->getStoreReviews();
+if ($reviews->getSize()):?>
+    <div class="page-title">
+        <h2><?= $this->__('What people are saying about us') ?></h2>
+        <table class="data-table">
+            <colgroup>
+                <col width="1">
+                <col width="1">
+                <col>
+            </colgroup>
+            <thead>
+            <tr class="first last">
+                <th><?= $this->__('Customer') ?></th>
+                <th><?= $this->__('Title') ?></th>
+                <th><?= $this->__('Review') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($reviews as $review): ?>
+                <tr>
+                    <td> <?= $this->escapeHtml($review->getCustomerName()) ?></td>
+                    <td width="30%"> <?= $this->escapeHtml($review->getTitle()) ?></td>
+                    <td> <?= $this->escapeHtml($review->getReview()) ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php endif; ?>
